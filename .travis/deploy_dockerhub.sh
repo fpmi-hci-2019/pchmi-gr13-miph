@@ -5,7 +5,7 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
 else
     TAG="$TRAVIS_BRANCH"
 fi
-image_name=miph:$TAG
+image_name=$DOCKER_USER/miph:$TAG
 echo $image_name
 docker build -f Dockerfile -t $image_name .
 docker push $image_name
