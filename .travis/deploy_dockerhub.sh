@@ -5,6 +5,7 @@ if [ "$TRAVIS_BRANCH" = "master" ]; then
 else
     TAG="$TRAVIS_BRANCH"
 fi
-echo $TRAVIS_REPO_SLUG:$TAG
-docker build -f Dockerfile -t $TRAVIS_REPO_SLUG:$TAG .
-docker push $TRAVIS_REPO_SLUG
+image_name=miph:$TAG
+echo $image_name
+docker build -f Dockerfile -t $image_name .
+docker push $image_name
