@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>My amazing blog</title>
+</head>
+<body style="margin: 0px">
+<header style="display: flex; background-color: #86E6FB;  align-items: center;">
+    <a style="padding: 10px" href="{% url 'polls:index' %}">
+        <h3>LogoImage</h3>
+    </a>
+    <a style="padding: 10px" href="{% url 'polls:index' %}">
+        Главная
+    </a>
+    <a style="padding: 10px" href="{% url 'polls:catalog' %}">
+        Каталог
+    </a>
+</header>
+<div>
+    <aside id="sidebar" style="background: #f0f0f0;  width: 20%; float: left;">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+    </aside>
+
+    <article id="content" style="background: #f0f0f0;  width: 80%; float: right;">
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+        <li><a href="{% url 'polls:detail' question.id %}">
+            {{ question.question_text }} </a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+    </article>
+</div>
+</body>
+</html>
