@@ -73,23 +73,4 @@ requests-oauthlib==1.2.0
 Send2Trash==1.5.0
 six==1.12.0
 sqlparse==0.3.0
-<<<<<<< HEAD
-stripe==2.37.1
-terminado==0.8.3
-testpath==0.4.4
-tornado==6.0.3
-traitlets==4.3.3
-txaio==18.8.1
-typed-ast==1.4.0
-urllib3==1.25.3
-virtualenv==16.6.1
-virtualenvwrapper-win==1.2.5
-wcwidth==0.1.7
-webencodings==0.5.1
-Werkzeug==0.12.2
-wrapt==1.11.2
-zipp==0.6.0
-zope.interface==4.6.0
-=======
 Werkzeug==0.15.3
->>>>>>> 5013f2edbe1e629269621ad9988e0f4740b7dc29
