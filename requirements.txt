@@ -74,3 +74,4 @@ Send2Trash==1.5.0
 six==1.12.0
 sqlparse==0.3.0
 Werkzeug==0.15.3
+pywin32=227
