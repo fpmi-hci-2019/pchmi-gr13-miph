@@ -1,0 +1,45 @@
+{% extends 'polls/base.html' %}
+{% block title %}Cabinet{% endblock %}
+
+{% block content %}
+{% if user %}
+<div>
+        <aside id="sidebar" style="width: 20%; float: left;">
+        <div style="margin: 5%;">
+            <img src="{{user.profile.user_image}}"  width="100%" height="100%">
+            <a href="{% url 'logout' %}">Выйти</a>
+        </div>
+    </aside>
+    <article id="content" style="width: 65%; padding-right: 10%; float: right">
+{% else %}
+    <p>Strange.</p>
+{% endif %}
+
+{% if goodsAtCart %}
+         <div style="border-left: 2px solid #ccc; padding-left: 3%">
+        <div><h2>Ваши заказы:</h2></div>
+    <ul>
+    {% for cart in goodsAtCart %}
+        <li style="display: flex; justify-content: space-between; padding-right: 5%; align-items: center">
+            <div style="display: flex; justify-content: flex-start;  width: 100%">
+                <img src="{{cart.good.good_image}}" alt="Simply Easy Learning" width="200" height="200">
+                <div style="padding-left: 5%; width: 100%">
+                    <a href="{% url 'polls:detail' cart.good.id %}"><h3>{{ cart.good.good_name }}</h3></a>
+                    <h4>{{cart.good.good_description}}</h4>
+                </div>
+            </div>
+            <div>
+            <h2>{{cart.good.good_price}}</h2>
+            <h2>{{cart.order_date}}</h2>
+                </div>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+    </article>
+</div>
+</div>
+{% endblock %}
+

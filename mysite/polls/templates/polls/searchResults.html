@@ -1,19 +1,10 @@
 {% extends 'polls/base.html' %}
-{% block title %}Catalog{% endblock %}
+{% block title %}Search{% endblock %}
 
 {% block content %}
-<div>
-    <aside id="sidebar" style="background: #f0f0f0;  width: 20%; float: left;">
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog/">Blog</a></li>
-        </ul>
-    </aside>
-
-    <article id="content" style="background: #f0f0f0;  width: 80%; float: right;">
-{% if goods_list %}
+{% if results %}
     <ul>
-    {% for good in goods_list %}
+    {% for good in results %}
         <li style="display: flex; justify-content: space-between; padding-right: 5%; align-items: center">
             <div style="display: flex; justify-content: flex-start;  width: 100%">
                 <img src="{{good.good_image}}" alt="Simply Easy Learning" width="200" height="200">
@@ -29,6 +20,4 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
-    </article>
-</div>
 {% endblock %}
