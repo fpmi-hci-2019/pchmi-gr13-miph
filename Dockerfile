@@ -14,4 +14,4 @@ RUN apk add libffi-dev libressl-dev
 COPY requirements.txt /src/requirements.txt
 RUN pip3 install -r /src/requirements.txt
 COPY mysite/ /src
-CMD cd /src && python manage.py runserver 0.0.0.0:80 --settings=mysite.settings
+CMD cd /src && python manage.py runserver 0.0.0.0:80

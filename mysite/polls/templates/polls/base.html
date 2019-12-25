@@ -1,0 +1,71 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>
+function myFunction() {
+  var txt;
+  if (confirm("Do you want to delete!")) {
+   //go to your delete path
+  } else {
+  //don't do anything
+  }
+
+}
+</script>
+    <script src="https://kit.fontawesome.com/ed7f7956b5.js"></script>
+    <link rel="stylesheet" href="style.css">
+  <title>{% block title %}Django Auth Tutorial{% endblock %}</title>
+  {% block head %}
+  {% endblock %}
+</head>
+<body style="margin: 0px">
+  <main>
+<header style="  padding-bottom:15%; z-index:0;">
+      <header style="position: fixed;  z-index: 9999; width: 100%; margin: 0;  top: 0;   opacity: 1; background-color: white;" >
+<div style="display: flex; background-color: #86E6FB; align-items: center; font-size: 1vw;">
+    <a style="padding-left: 5%; text-decoration: none;" href="{% url 'polls:index' %}">
+        <h1>LogoImage</h1>
+    </a>
+    <a style="padding-left: 12%; text-decoration: none;" href="{% url 'polls:index' %}">
+        <h2>Главная</h2>
+    </a>
+    <a style="padding-left: 12%; text-decoration: none;" href="{% url 'polls:catalog' %}">
+        <h2>Каталог</h2>
+    </a>
+        <a style="padding-left: 12%; text-decoration: none;" href="#">
+        <h2>Информация</h2>
+    </a>
+    <a style="padding-left: 12%; text-decoration: none;" href="#">
+        <h2>Новости</h2>
+    </a>
+</div>
+<div style="display: flex; align-items: center; margin: 10px; margin-bottom: 0; padding-left: 2%; font-size: 1vw;">
+<form style="display: flex; width: 100%" action="{% url 'polls:search' %}" method="GET">
+    <input type="text" style="width: 80%; height: 5vh; " name="searched_text">
+<!--<input style="background-color: lightGreen" type="submit" value="Vote">-->
+</form>
+    <a href="{% url 'polls:cartView' %}" style="text-decoration: none;">
+        <div style="padding-right: 5%; display: flex; align-items: center;">
+            <i class="fas fa-cart-arrow-down fa-3x"></i>
+            <h2 style="padding: 5%">Ваша корзина</h2>
+        </div>
+    </a>
+  {%if user.is_authenticated %}
+    <div style="padding-right: 5%; padding-left: 5%;">
+      <a href="{% url 'polls:userCabinet' %}" style="text-decoration: none;">
+        <h2>Личный кабинет, {{ user.get_username }} </h2>
+      </a>
+    </div>
+  {% else %}
+     <a href="{% url 'login'%}?next={{request.path}}"  style="text-decoration: none"><h2>Войти</h2></a>
+   {% endif %}
+</div>
+          </header>
+    </header>
+    {% block content %}
+    {% endblock %}
+  </main>
+</body>
+</html>
