@@ -1,0 +1,23 @@
+{% extends 'polls/base.html' %}
+{% block title %}Search{% endblock %}
+
+{% block content %}
+{% if results %}
+    <ul>
+    {% for good in results %}
+        <li style="display: flex; justify-content: space-between; padding-right: 5%; align-items: center">
+            <div style="display: flex; justify-content: flex-start;  width: 100%">
+                <img src="{{good.good_image}}" alt="Simply Easy Learning" width="200" height="200">
+                <div style="padding-left: 5%; width: 100%">
+                    <a href="{% url 'polls:detail' good.id %}"><h3>{{ good.good_name }}</h3></a>
+                    <h4>{{good.good_description}}</h4>
+                </div>
+            </div>
+            <h2>{{good.good_price}}</h2>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}
+{% endblock %}

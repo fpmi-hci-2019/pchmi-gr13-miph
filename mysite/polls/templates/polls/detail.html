@@ -1,0 +1,31 @@
+{% extends 'polls/base.html' %}
+{% block title %}Detail{% endblock %}
+
+{% block content %}
+    {% if good %}
+    <aside style="width: 20%; float: left; padding-left: 5%;">
+        <div>
+            <img src="{{good.good_image}}" alt="Simply Easy Learning" width="50%" height="50%">
+        </div>
+    </aside>
+    <article id="content" style="width: 65%; float: right; text-align: left; padding-right: 10%;">
+
+        <h1 style="height: 5vh;">{{ good.good_name }}</h1>
+        <h3 style="height: 55vh;">{{good.good_description}}</h3>
+        <div>
+    <!--    <h2 style="height: 20vh;">Цена: {{good.good_price}}</h2>-->
+            {%if user.is_authenticated %}
+            <form action="{% url 'polls:addToCart' good.id %}" method="post">
+                {% csrf_token %}
+                <input style="background-color: lightGreen; width: 100%; height: 5vh; text-align: center;" type="submit" value="Купить: {{good.good_price}}">
+            </form>
+            {% endif %}
+
+            </div>
+    </article>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% endblock %}
