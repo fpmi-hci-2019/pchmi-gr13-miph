@@ -14,10 +14,13 @@
         <h3 style="height: 55vh;">{{good.good_description}}</h3>
         <div>
     <!--    <h2 style="height: 20vh;">Цена: {{good.good_price}}</h2>-->
+            {%if user.is_authenticated %}
             <form action="{% url 'polls:addToCart' good.id %}" method="post">
                 {% csrf_token %}
                 <input style="background-color: lightGreen; width: 100%; height: 5vh; text-align: center;" type="submit" value="Купить: {{good.good_price}}">
             </form>
+            {% endif %}
+
             </div>
     </article>
     {% else %}
